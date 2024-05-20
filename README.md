@@ -1,6 +1,6 @@
 # k8s-workshop-in-action
 
-## prerequisites software
+## Prerequisites software
 
 ### docker
 - [Macos](https://docs.docker.com/desktop/install/mac-install/)
@@ -86,4 +86,57 @@ k3d --help
 Check kubectl work 
 ```
 kubectl --help
+```
+
+## Make sure it's work
+
+Before workshop please ensure your machine and setup all it works.
+
+### Create cluster
+Running below command for create cluster
+```
+k3d cluster create my-cluster --servers 1 --agents 3 --port "8888:80@loadbalancer" --port "8889:443@loadbalancer"
+```
+
+Checking cluster
+```
+kubectl get node
+```
+
+The output should be like this
+```
+NAME                      STATUS   ROLES                  AGE   VERSION
+k3d-my-cluster-server-0   Ready    control-plane,master   53s   v1.27.4+k3s1
+k3d-my-cluster-agent-1    Ready    <none>                 49s   v1.27.4+k3s1
+k3d-my-cluster-agent-0    Ready    <none>                 48s   v1.27.4+k3s1
+k3d-my-cluster-agent-2    Ready    <none>                 48s   v1.27.4+k3s1
+```
+
+### Running application
+Try to running sample application. For example running nginx
+
+Running below command
+```
+kubectl run my-nginx --image nginx:1.25.4
+```
+
+Checking application was run
+```
+kubectl get pod
+```
+
+The output should be like this
+```
+NAME       READY   STATUS    RESTARTS   AGE
+my-nginx   1/1     Running   0          30s
+```
+
+The status must be **Running**
+
+> [!IMPORTANT]  
+> **If all it's work. Your machine already for the workshop.**
+
+Remove cluster
+```
+k3d cluster delete my-cluster
 ```
