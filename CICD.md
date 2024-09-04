@@ -17,8 +17,8 @@ Nodejs version 20
 - Ubuntu:
 
   ```sh
-  sudo apt update
-  sudo apt install nodejs
+  curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+  sudo apt install -y nodejs
   ```
 
 Checking it work
@@ -65,7 +65,7 @@ make -v
 
     ```sh
     sudo apt update
-    sudo apt install python3
+    sudo apt install python3 python3.10-venv
     ```
 
 Checking it work
@@ -84,6 +84,37 @@ Install with Long Term Support(LTS) release
 - Windows: <https://www.jenkins.io/doc/book/installing/windows/>
 - Ubuntu: <https://www.jenkins.io/doc/book/installing/linux/#debianubuntu>
 
+for ubuntu run command for docker permission
+
+```sh
+sudo usermod -aG docker jenkins
+sudo service jenkins restart
+```
+
 Checking it work go to <http://localhost:8080>
 
 If not work maybe check Java have been installed, or check path java_home
+
+---
+
+### Chrome & newman (Ubuntu server only)
+
+Newman
+
+```sh
+npm i newman -g
+```
+
+Cypress driver
+
+```sh
+apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+```
+
+Install chrome
+
+```sh
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt update
+sudo apt install ./google-chrome-stable_current_amd64.deb
+```
