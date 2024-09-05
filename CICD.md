@@ -65,7 +65,7 @@ make -v
 
     ```sh
     sudo apt update
-    sudo apt install python3 python3.10-venv
+    sudo apt install python3 python3-venv
     ```
 
 Checking it work
@@ -108,8 +108,10 @@ npm i newman -g
 Cypress driver
 
 ```sh
-apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+apt-get install libgtk2.0-0t64 libgtk-3-0t64 libgbm-dev libnotify-dev libnss3 libxss1 libasound2t64 libxtst6 xauth xvfb
 ```
+
+Reference: <https://docs.cypress.io/guides/getting-started/installing-cypress#UbuntuDebian> 
 
 Install chrome
 
